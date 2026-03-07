@@ -1,0 +1,32 @@
+async function basicFetch(url, payload) {
+  const res = await fetch(url, payload)
+  const body = await res.json()
+  return body
+}
+
+
+export async function signup(context) {
+  const payload = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(context),
+  }
+    console.log('signUp',context)
+  const body = await basicFetch("http://localhost:8000/auth/signup",payload)
+  return body
+}
+
+export async function login(context) {
+  const payload = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(context)
+  }
+  const body = await basicFetch("http://localhost:8000/auth/get-token", payload)
+  console.log(body)
+  return body.token
+}

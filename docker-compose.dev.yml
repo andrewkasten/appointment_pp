@@ -1,0 +1,46 @@
+services:
+  frontend:
+    image: node:lts-alpine
+    working_dir: /frontend
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_BASE_URL=http://localhost:8000
+    command: sh -lc "npm ci && npm run dev -- --host 0.0.0.0 --port 5173"
+    depends_on:
+      - api
+  api:
+    build:
+      context: ./backend
+      dockerfile: appointments/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_KEY=$DJANGO_KEY
+      - DEBUG=$DEBUG
+      - DB_NAME=$POSTGRES_DB
+      - DB_USER=$POSTGRES_USER
+      - DB_PASS=$POSTGRES_PASSWORD
+    depends_on:
+      - db
+  nginx:
+    build: 
+      context: .
+      dockerfile: ./webserver/Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=$POSTGRES_DB
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+
+volumes:
+  postgres_data:

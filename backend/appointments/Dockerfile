@@ -1,0 +1,11 @@
+FROM python:3.12-slim
+
+WORKDIR /src
+
+COPY appointments/requirements.txt ./requirements.txt
+
+RUN pip install -r requirements.txt
+
+COPY appointments/ ./
+
+CMD gunicorn --bind 0.0.0.0:8000 --workers 3 appointments.wsgi:application
