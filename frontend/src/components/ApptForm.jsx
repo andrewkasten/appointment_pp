@@ -12,7 +12,7 @@ import { Button, TextField, Box } from "@mui/material";
 import "../App.css";
 import ListAppointments from "./ListAppointments";
 
-setKey("AIzaSyCfp_LRMGRPma3_eKzJ5yKkOj3EizQvflw");
+
 setLocationType("ROOFTOP");
 
 export default function ApptForm() {
