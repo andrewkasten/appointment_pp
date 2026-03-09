@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import './App.css'
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar"
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Appointments from './pages/Appointments';
+import Hero from './components/Hero'
 // import Logout from './pages/Logout'
-import Form from "./components/Form"
 import {Container, createTheme, ThemeProvider} from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
 
 const themeGreen = {
   palette: {
@@ -55,12 +54,14 @@ const [formData, setFormData] = useState({ username: '', password: '' });
     <>
     <CssBaseline />
     <ThemeProvider theme={myTheme}>
-      <Container fixed>
+      <Container maxWidth="xlg">
      <Router>
             <div >
               <main> 
               <Navbar/>
+              {/* <Hero/> */}
               <Routes>
+                <Route path="/" element={<Hero/>} /> 
                 <Route path="/appointments" element={<Appointments/>} /> 
                 <Route path="/signup" element={<Signup handleInputChange={handleInputChange} formData={formData} /> } /> 
                 <Route path="/login" element={<Login handleInputChange={handleInputChange} formData={formData} />} /> 

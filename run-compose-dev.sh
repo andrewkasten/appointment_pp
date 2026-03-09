@@ -9,5 +9,5 @@ docker-compose -f docker-compose.dev.yml up -d
 
 # make sure the postgres container is ready, then run migrations
 sleep 5
-docker exec 2b5c539e7aa7  python /src/manage.py makemigrations 
-docker exec 2b5c539e7aa7  python /src/manage.py migrate
+docker exec appointment_pp-api-1  python /src/manage.py makemigrations 
+docker exec appointment_pp-api-1  python /src/manage.py migrate
