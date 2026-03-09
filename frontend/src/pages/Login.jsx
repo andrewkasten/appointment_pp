@@ -2,7 +2,8 @@ import Form from "../components/Form"
 import { useState } from 'react'
 import { login } from '../api/authApi';
 import { Navigate } from 'react-router-dom';
- 
+import Stack from '@mui/material/Stack';
+
 
 export default function Login({handleInputChange, formData, handleToken}) {
 
@@ -17,7 +18,7 @@ export default function Login({handleInputChange, formData, handleToken}) {
     if(!token) {
       setResponseMsg("Error logging in")
     } else {
-      handleToken(token)
+      // handleToken(token)
       setShouldRedirect(true)
       localStorage.setItem('token', token)
     }
@@ -25,6 +26,15 @@ export default function Login({handleInputChange, formData, handleToken}) {
   if (shouldRedirect) {
     return <Navigate to="/appointments"/>
   } else {
-    return <Form formType={"Login"} handleInputChange={handleInputChange} formData={formData}handleToken={handleToken} handleSubmit={handleSubmit} responseMsg={responseMsg}/>
+    return (
+    <>
+    <Stack sx={{justifyContent: "center", alignItems: "center",}}>
+    <h2>Login</h2>
+    <Form formType={"Login"} handleInputChange={handleInputChange} formData={formData} handleToken={handleToken} handleSubmit={handleSubmit} responseMsg={responseMsg}/>
+  </Stack>
+  </>  
+  )
+  
+  
   }
 }
