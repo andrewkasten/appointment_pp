@@ -90,6 +90,11 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+
+    'DATE_INPUT_FORMATS': [("%Y-%m-%d"),]
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators

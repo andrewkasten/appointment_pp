@@ -35,9 +35,7 @@ function ListAppointments() {
       {appointments.map((appointment, index) => (
         <>
         <List>
-        <ListItem key={index} >{appointment.name} </ListItem>
-        <ListItem>{appointment.date} </ListItem>
-        <ListItem> {appointment.time}</ListItem>
+        <ListItem key={index} > {appointment.name} {appointment.date} {appointment.time} </ListItem>
         <ListItem> {appointment.street_1}</ListItem>
         <Button variant="outlined" onClick={() => handleDelete(appointment.id)}>Delete</Button>
         </List>
@@ -51,7 +49,7 @@ function ListAppointments() {
   );
 }
 
-setKey("");
+setKey("AIzaSyCzHY53G4VyskI_ubb2p750x2obw8U79CA");
 setLocationType("ROOFTOP");
 
 function ApptForm() {
@@ -106,7 +104,7 @@ function ApptForm() {
       <h3>New Appointment</h3>
       <Box component="form" sx={{ "& .MuiTextField-root": { m: 0.4, width: "26ch" } }} noValidate autoComplete="off">
         <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)}/>
-        <TextField type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+        <TextField type="date" pattern="\d{2}-\d{2}-\d{4}" value={date} onChange={(e) => setDate(e.target.value)}/>
         <TextField type="time" value={time} onChange={(e) => setTime(e.target.value)}/>
         <TextField label="Street" value={street1} onChange={(e) => setStreet1(e.target.value)}/>
         <TextField label="City" value={city} onChange={(e) => setCity(e.target.value)}/>

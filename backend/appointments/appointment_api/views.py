@@ -25,6 +25,7 @@ class SingleAppointmentView(APIView):
         appointment = Appointment.objects.filter(pk=pk)
         serializer = AppointmentSerializer(appointment, many=True)
         return Response(serializer.data)
+    
     def put(self, request, pk):
         appointment = Appointment.objects.filter(pk=pk)
         serializer = AppointmentSerializer(appointment, data=request.data)
@@ -32,6 +33,7 @@ class SingleAppointmentView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     def delete(self, request, pk):
         appointment = Appointment.objects.filter(pk=pk)
         appointment.delete()
