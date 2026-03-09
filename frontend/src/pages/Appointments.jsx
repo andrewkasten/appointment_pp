@@ -49,7 +49,7 @@ function ListAppointments() {
   );
 }
 
-setKey("AIzaSyCzHY53G4VyskI_ubb2p750x2obw8U79CA");
+setKey(import.meta.env.VITE_GEOCODE_KEY);
 setLocationType("ROOFTOP");
 
 function ApptForm() {
