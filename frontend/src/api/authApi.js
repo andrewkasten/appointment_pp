@@ -3,8 +3,6 @@ async function basicFetch(url, payload) {
   const body = await res.json()
   return body
 }
-
-
 export async function signup(context) {
   const payload = {
     method: "POST",

@@ -35,7 +35,7 @@ export default function Hero() {
               fontSize: 'clamp(3rem, 10vw, 3.5rem)',
             }}
           >
-            Appointments, Map in One Place
+            Appointments and Map in One Place
           </Typography>
           <Typography
             sx={{

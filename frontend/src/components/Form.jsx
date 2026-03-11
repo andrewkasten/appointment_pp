@@ -10,11 +10,9 @@ function Form({formType, handleInputChange, formData, handleSubmit, responseMsg}
     <br></br>
     <br></br>
     {responseMsg && <h2>{responseMsg}</h2>}
-   
       <form onSubmit={handleSubmit}>
         <div>
           <InputLabel  htmlFor="username">Usename</InputLabel>
-          
           <Input
             type="text"
             name="username"
@@ -36,7 +34,6 @@ function Form({formType, handleInputChange, formData, handleSubmit, responseMsg}
         <br></br>
         <Button  variant="contained" type="submit">{formType}</Button>
       </form>
-    
     </>
   );
 }

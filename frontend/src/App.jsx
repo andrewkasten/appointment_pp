@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar"
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Appointments from './pages/Appointments';
 import Hero from './components/Hero'
-// import Logout from './pages/Logout'
+import Logout from './pages/Logout'
 import {Container, createTheme, ThemeProvider} from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -34,13 +33,13 @@ const myTheme = createTheme(themeGreen);
 function App() {
 
 const [formData, setFormData] = useState({ username: '', password: '' });
-  // const [userToken, setUserToken] = useState(null)
+  const [userToken, setUserToken] = useState(null)
 
-  // const handleToken = (token) => {
-  //   setFormData({ username: '', password: '' })
-  //   setUserToken(token)
-  //   localStorage.setItem('token', token)
-  // }
+  const handleToken = (token) => {
+    setFormData({ username: '', password: '' })
+    setUserToken(token)
+    localStorage.setItem('token', token)
+  }
   
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -59,13 +58,12 @@ const [formData, setFormData] = useState({ username: '', password: '' });
             <div >
               <main> 
               <Navbar/>
-              {/* <Hero/> */}
               <Routes>
                 <Route path="/" element={<Hero/>} /> 
                 <Route path="/appointments" element={<Appointments/>} /> 
                 <Route path="/signup" element={<Signup handleInputChange={handleInputChange} formData={formData} /> } /> 
                 <Route path="/login" element={<Login handleInputChange={handleInputChange} formData={formData} />} /> 
-                {/* <Route path="/logout" element={<Logout userToken={userToken} setUserToken={setUserToken}/>} />  */}
+                <Route path="/logout" element={<Logout userToken={userToken} setUserToken={setUserToken}/>} /> 
             </Routes>
             </main>
             </div>
